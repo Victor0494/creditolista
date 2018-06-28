@@ -1,0 +1,26 @@
+{
+  "name": "pkg",
+  "version": "1.0.0",
+  "description": "Criação do microserviço para verificação do credito",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/renanmassmannnew/credit.git"
+  },
+  "author": "Renan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/renanmassmannnew/credit/issues"
+  },
+  "homepage": "https://github.com/renanmassmannnew/credit#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "fs": "0.0.1-security",
+    "jsonwebtoken": "^8.3.0",
+    "request": "^2.87.0"
+  }
+}
