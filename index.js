@@ -1,7 +1,7 @@
 var request = require("request");
 const express = require('express')
 const app = express()
-const object = require('./credit')
+const creditCards = require('./credit')
 
 const pkg = require('./package')
 var bodyParser = require('body-parser')
@@ -56,10 +56,10 @@ app.post('/buy',verifyToken,function (req,res) {
         console.log(card)
         console.log(valor)
 
-        for (var i = 0; i < object.length; i++){           
-            if (object[i].number == card){
-              if(object[i].limit >= valor)
-                object[i].limit = object[i].limit - valor
+        for (var i = 0; i < creditCards.length; i++){           
+            if (creditCards[i].number == card){
+              if(creditCards[i].limit >= valor)
+                creditCards[i].limit = creditCards[i].limit - valor
 
             }
         }
@@ -91,9 +91,9 @@ app.post('/balance',verifyToken,function (req,res) {
 })
 
 function saldo(valor, card){
-    for (var i = 0; i < object.length; i++){           
-        if (object[i].number == card){
-          if(object[i].limit >= valor)
+    for (var i = 0; i < creditCards.length; i++){           
+        if (creditCards[i].number == card){
+          if(creditCards[i].limit >= valor)
           return true
         }
     } 
@@ -118,9 +118,9 @@ function findCreditCard (creditCardNumber){
     filePath = './credit.json'
     const fs = require(filePath)
 
-    for (var i = 0; i < object.length; i++){           
-        if (object[i].number == creditCardNumber){
-            return object[i]
+    for (var i = 0; i < creditCards.length; i++){           
+        if (creditCards[i].number == creditCardNumber){
+            return creditCards[i]
         }
     }
 }
@@ -144,8 +144,8 @@ Array.prototype.contains = function(obj) {
 
 
 app.get('/networks', function(req,res){ 
-    let networks=[listacredito[0].network]
-    listacredito.forEach(element => {
+    let networks=[creditCards[0].network]
+    creditCards.forEach(element => {
         if(!networks.contains(element.network)){
             networks.push(element.network)
         }
